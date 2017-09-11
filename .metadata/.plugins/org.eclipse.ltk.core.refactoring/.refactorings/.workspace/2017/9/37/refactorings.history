@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete 4 resources" deleteContents="true" description="Delete 4 resources" element1="/ev3pcsamples" element2="/ev3samples" element3="/org.lejos.ev3.example" element4="/org.lejos.ev3.pcexample" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1505171347402"/>&#x0A;<refactoring comment="Delete resource &apos;Lab 1 Take 2 - Wall Following&apos;" deleteContents="true" description="Delete resource &apos;Lab 1 Take 2 - Wall Following&apos;" element1="/Lab 1 Take 2 - Wall Following" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1505171405202"/>
+</session>

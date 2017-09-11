@@ -50,19 +50,20 @@ public class PController implements UltrasonicController {
     }
 
     // TODO: process a movement based on the us distance passed in (P style)
-    // ASSUME MOVEMENT IS COUNTERCLOCKWISE
+    // ASSUME COUNTERCLOCKWISE MOVEMENT
+    // RIGHT (inner) MOTOR IS CONNECTED TO PORT D AND HAS A BLUE PIN ON TOP
     if (distance > bandCenter) {
     	int error = distance - bandCenter;
-    	// proportionally reduce speed of left wheel
-    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED);
-    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED - 5*error);	// TODO 5 is a constant that
-    																// should be changed 
+    	// proportionally reduce speed of inner wheel
+    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED - 5*error);
+    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);	// TODO 5 is a constant that
+    														// should be changed 
     } else if (distance < bandCenter) {
     	int error = bandCenter - distance;
-    	// proportionally reduce speed of right wheel
-    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED - 5*error);// TODO 5 is a constant that
-																	// should be changed
-    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);
+    	// proportionally reduce speed of outer wheel
+    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED);// TODO 5 is a constant that
+														  // should be changed
+    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED - 5*error);
     } else {
     	// distance is perfect
     	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);
