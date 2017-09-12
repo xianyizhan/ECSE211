@@ -46,7 +46,7 @@ public class PController implements UltrasonicController {
       // distance went below 255: reset filter and leave
       // distance alone.
       filterControl = 0;
-      this.distance = (int)(distance / Math.sqrt(2));
+      this.distance = distance;
     }
 
     // TODO: process a movement based on the us distance passed in (P style)

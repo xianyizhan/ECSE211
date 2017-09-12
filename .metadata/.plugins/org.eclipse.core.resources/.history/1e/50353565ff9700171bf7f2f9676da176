@@ -26,7 +26,7 @@ public class BangBangController implements UltrasonicController {
 
   @Override
   public void processUSData(int distance) {
-    this.distance = (int) (distance / Math.sqrt(2));
+    this.distance = distance;
     // TODO: process a movement based on the us distance passed in (BANG-BANG style)
     // ASSUME COUNTERCLOCKWISE MOVEMENT
     // RIGHT WHEEL IS CONNECTED TO PORT D AND HAS A BLUE PIN ON TOP
