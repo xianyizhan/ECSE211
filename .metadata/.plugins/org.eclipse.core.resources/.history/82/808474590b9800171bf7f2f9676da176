@@ -12,7 +12,6 @@ public class PController implements UltrasonicController {
   private final int bandWidth;
   private int distance;
   private int filterControl;
-  private int error_constant = 10;
 
   public PController(int bandCenter, int bandwidth) {
     this.bandCenter = bandCenter;
@@ -21,8 +20,10 @@ public class PController implements UltrasonicController {
 
     WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED); // Initialize motor rolling forward
     WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED);
-    WallFollowingLab.leftMotor.forward();
-    WallFollowingLab.rightMotor.forward();
+    // WallFollowingLab.leftMotor.forward();
+    // WallFollowingLab.rightMotor.forward();
+    WallFollowingLab.leftMotor.backward();
+    WallFollowingLab.rightMotor.backward();
   }
 
   @Override
@@ -57,15 +58,15 @@ public class PController implements UltrasonicController {
 	if (this.distance > bandCenter + (bandWidth/2)) {
     	int error = this.distance - bandCenter;
     	// proportionally reduce speed of inner wheel
-    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED - error_constant*error);
-    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED);	// TODO 5 is a constant that
+    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED - 5*error);
+    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);	// TODO 5 is a constant that
     														// should be changed 
     } else if (this.distance < bandCenter - (bandWidth/2)) {
     	int error = bandCenter - this.distance;
     	// proportionally reduce speed of outer wheel
-    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);// TODO 5 is a constant that
+    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED);// TODO 5 is a constant that
 														  // should be changed
-    	WallFollowingLab.rightMotor.setSpeed(MOTOR_SPEED - error_constant*error);
+    	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED - 5*error);
     } else {
     	// distance is on track
     	WallFollowingLab.leftMotor.setSpeed(MOTOR_SPEED);

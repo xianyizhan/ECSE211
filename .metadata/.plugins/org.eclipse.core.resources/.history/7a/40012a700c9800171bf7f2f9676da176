@@ -18,8 +18,10 @@ public class BangBangController implements UltrasonicController {
     this.motorHigh = motorHigh;
     WallFollowingLab.leftMotor.setSpeed(motorHigh); // Start robot moving forward
     WallFollowingLab.rightMotor.setSpeed(motorHigh);
-    WallFollowingLab.leftMotor.forward();
-    WallFollowingLab.rightMotor.forward();
+    // WallFollowingLab.leftMotor.forward();
+    // WallFollowingLab.rightMotor.forward();
+    WallFollowingLab.leftMotor.backward();
+    WallFollowingLab.rightMotor.backward();
   }
 
   @Override
@@ -30,13 +32,13 @@ public class BangBangController implements UltrasonicController {
     // RIGHT WHEEL IS CONNECTED TO PORT D AND HAS A BLUE PIN ON TOP
     // if distance too far, slow down right wheel
     if (this.distance > bandCenter + (bandWidth/2)) {
-    	WallFollowingLab.leftMotor.setSpeed(motorLow);
-    	WallFollowingLab.rightMotor.setSpeed(motorHigh);
+    	WallFollowingLab.leftMotor.setSpeed(motorHigh);
+    	WallFollowingLab.rightMotor.setSpeed(motorLow);
     }
     // if distance too close, slow down left wheel
     else if (this.distance < bandCenter - (bandWidth/2)) {
-    	WallFollowingLab.leftMotor.setSpeed(motorHigh);
-    	WallFollowingLab.rightMotor.setSpeed(motorLow);
+    	WallFollowingLab.leftMotor.setSpeed(motorLow);
+    	WallFollowingLab.rightMotor.setSpeed(motorHigh);
     }
     // if distance correct, set both wheels to high
     else if (this.distance == bandCenter) {
